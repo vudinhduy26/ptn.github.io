@@ -1,8 +1,4 @@
 
-onload = () => {
-    const c = setTimeout(() => {
-      document.body.classList.remove("not-loaded");
-      clearTimeout(c);
-    }, 1000);
-  };
+// Animation sẽ được bắt đầu khi bấm vào trái tim
+// Không tự động chạy khi load trang
   

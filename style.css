@@ -983,7 +983,7 @@ body {
     transform: scale(0);
   }
 }
-.not-loaded * {
+.not-loaded *:not(.intro-page):not(.intro-page *) {
   animation-play-state: paused !important;
 }
 
@@ -1070,6 +1070,71 @@ body {
     opacity: 1;
     width: 100%;
   }
+}
+
+/* Trang mở đầu */
+.intro-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+.intro-content {
+  text-align: center;
+  animation: intro-fade-in 2s ease-in;
+}
+
+.intro-title {
+  font-family: 'Georgia', serif;
+  font-size: 4.5vmin;
+  color: #FF1493;
+  margin: 0 0 5vmin 0;
+  text-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+  animation: title-glow 3s ease-in-out infinite alternate;
+}
+
+.heart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  width: 8vmin;
+  height: 8vmin;
+  /* background: radial-gradient(circle, #FF69B4, #FF1493); */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: heart-beat 2s ease-in-out infinite;
+  box-shadow: none !important;
+}
+
+.heart:hover {
+  transform: scale(1.1);
+}
+
+.heart:active {
+  transform: scale(0.95);
+}
+
+.heart-text {
+  font-size: 4vmin;
+  animation: heart-pulse 1.5s ease-in-out infinite;
+}
+
+.main-content {
+  display: none;
 }
 
 /* Background ngôi sao */
@@ -1202,5 +1267,44 @@ body {
     transform: scale(1.2);
   }
 }
+
+@keyframes intro-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes title-glow {
+  0% {
+    text-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 30px rgba(255, 20, 147, 1), 0 0 40px rgba(255, 105, 180, 0.6);
+  }
+}
+
+@keyframes heart-beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes heart-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
 
 /*# sourceMappingURL=style.css.map */

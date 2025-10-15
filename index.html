@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Blossoming Flowers at Magical Night</title>
+    <title>Bé Như hehe</title>
 </head>
 <body class="not-loaded">
   <div class="night"></div>
@@ -306,6 +306,18 @@
     </div>
   </div>
   
+  <!-- Trang mở đầu -->
+  <div class="intro-page" id="introPage">
+    <div class="intro-content">
+      <h2 class="intro-title">Món quà bé nhỏ cho em :3</h2>
+      <div class="heart-container">
+        <div class="heart" id="heartButton" onclick="startExperience()">
+          <span class="heart-text">❤️</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Background ngôi sao -->
   <div class="stars-background">
     <div class="star star--1"></div>
@@ -330,16 +342,52 @@
     <div class="star star--20"></div>
   </div>
 
-  <!-- Lá thư tình -->
-  <div class="celebration-text">
-    <div class="love-letter">
-      <p class="line-1">Xin chào cô gái anh yêu!</p>
-      <p class="line-2">Anh thật sự không có quá nhiều lời hoa mỹ để dành tặng cho em trong ngày 20/10</p>
-      <p class="line-3">Chỉ mong rằng em luôn bình an, luôn yên vui và luôn hạnh phúc.</p>
-      <p class="line-4">Mãi yêu em và mãi bên cạnh em.</p>
-      <p class="signature">--Anh yêu của em--</p>
+
+  <!-- Nội dung chính (ẩn ban đầu) -->
+  <div class="main-content" id="mainContent">
+    <!-- Lá thư tình -->
+    <div class="celebration-text">
+      <div class="love-letter">
+        <p class="line-1">Xin chào cô gái anh yêu!</p>
+        <p class="line-2">Anh thật sự không có quá nhiều lời hoa mỹ để dành tặng cho em trong ngày 20/10</p>
+        <p class="line-3">Chỉ mong rằng em luôn bình an, luôn yên vui và luôn hạnh phúc.</p>
+        <p class="line-4">Mãi yêu em và mãi bên cạnh em.</p>
+        <p class="signature">--Anh yêu của em--</p>
+      </div>
     </div>
   </div>
 </body>
 </html>
 <script src="main.js"></script>
+<script>
+function startExperience() {
+  // Phát âm thanh trái tim
+  playHeartSound();
+  
+  // Ẩn trang mở đầu
+  document.getElementById('introPage').style.display = 'none';
+  
+  // Hiện nội dung chính
+  document.getElementById('mainContent').style.display = 'block';
+  
+  // Bắt đầu animation hoa ngay lập tức
+  document.body.classList.remove('not-loaded');
+}
+
+function playHeartSound() {
+  try {
+    // Phát file âm thanh every-time.mp3
+    const audio = new Audio('every-time.mp3');
+    audio.volume = 0.7; // Đặt volume 70%
+    audio.play().catch(e => {
+      console.log('Không thể phát âm thanh:', e);
+      // Fallback: tạo âm thanh đơn giản
+      console.log('\u0007'); // ASCII bell character
+    });
+  } catch (error) {
+    console.log('Audio không thể phát:', error);
+    // Fallback: tạo âm thanh đơn giản bằng beep
+    console.log('\u0007'); // ASCII bell character
+  }
+}
+</script>
